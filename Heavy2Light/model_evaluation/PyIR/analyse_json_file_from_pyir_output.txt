@@ -1,0 +1,138 @@
+Starting sequence analysis...
+Successfully loaded 10000 sequences
+
+===== Basic Statistics =====
+Total number of sequences: 10000
+Average sequence length: 119.00 ± 0.00
+
+===== Domain Classification =====
+imgt: 10000 (100.00%)
+
+===== Region Statistics =====
+FR1:
+  Average percent identity: 95.68% ± 13.27%
+  Average length: 20.84 ± 8.99
+CDR1:
+  Average percent identity: 87.90% ± 18.56%
+  Average length: 6.87 ± 1.55
+FR2:
+  Average percent identity: 96.39% ± 5.96%
+  Average length: 16.64 ± 1.24
+CDR2:
+  Average percent identity: 90.00% ± 18.72%
+  Average length: 3.02 ± 0.26
+FR3:
+  Average percent identity: 97.39% ± 4.91%
+  Average length: 32.21 ± 7.60
+CDR3:
+  Average percent identity: 89.34% ± 14.64%
+  Average length: 7.10 ± 1.22
+Total:
+  Average percent identity: 95.86% ± 5.26%
+  Average length: 80.59 ± 13.73
+
+===== Full Sequence Statistics =====
+Average percent identity across full sequence: 95.86% ± 5.26%
+
+===== Top Hit Gene Distribution =====
+IGKV1-39*01 unnamed protein product: 1888 (18.88%)
+IGKV1-5*01 unnamed protein product: 1366 (13.66%)
+IGKV1-5*03 unnamed protein product: 1173 (11.73%)
+IGKV3-15*01 unnamed protein product: 749 (7.49%)
+IGLV2-14*01 unnamed protein product: 734 (7.34%)
+IGLV2-14*03 unnamed protein product: 600 (6.00%)
+IGKV1-33*01 unnamed protein product: 444 (4.44%)
+IGLV2-11*01 unnamed protein product: 443 (4.43%)
+IGKV3-11*01 unnamed protein product: 354 (3.54%)
+IGKV1-12*01 unnamed protein product: 276 (2.76%)
+
+===== E-value Distribution =====
+Minimum E-value: 2e-73
+Maximum E-value: 2e-26
+Median E-value: 1e-52
+
+===== Sample Sequence Analysis =====
+Sequence ID: seq1746097525323
+Raw Sequence: SGTDFTLTISSLQPEDFATYYCQQSYSTPRTFGQGTKVDIKDIQMTQSPSSLSASVGDRVTITCRASQSISSYLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSL
+NT-Trimmed: DIQMTQSPSSLSASVGDRVTITCRASQSISSYLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSL
+
+Alignment between Raw and Trimmed sequences:
+SGTDFTLTISSLQPEDFATYYCQQSYSTPRTFGQGTKVDIKDIQMTQSPSSLSASVGDRVTITCRASQSISSYLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSL
+                                         ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+-----------------------------------------DIQMTQSPSSLSASVGDRVTITCRASQSISSYLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSL
+  Score=78
+
+
+Generating visualizations...
+Visualizations saved to 'sequence_analysis-2.png'
+
+Analyzing amino acid composition...
+
+===== Amino Acid Composition =====
+
+FR1 Region:
+Total amino acids: 177931
+Most common amino acids:
+  S: 40287 (22.64%)
+  T: 24015 (13.50%)
+  Q: 15164 (8.52%)
+  A: 13562 (7.62%)
+  V: 13023 (7.32%)
+
+CDR1 Region:
+Total amino acids: 66492
+Most common amino acids:
+  S: 17379 (26.14%)
+  Y: 7538 (11.34%)
+  Q: 6928 (10.42%)
+  I: 6052 (9.10%)
+  G: 5541 (8.33%)
+
+FR2 Region:
+Total amino acids: 158486
+Most common amino acids:
+  L: 22366 (14.11%)
+  K: 21103 (13.32%)
+  Q: 19150 (12.08%)
+  P: 18896 (11.92%)
+  Y: 17920 (11.31%)
+
+CDR2 Region:
+Total amino acids: 48825
+Most common amino acids:
+  S: 12142 (24.87%)
+  A: 9991 (20.46%)
+  D: 4290 (8.79%)
+  G: 3704 (7.59%)
+  T: 2990 (6.12%)
+
+FR3 Region:
+Total amino acids: 300986
+Most common amino acids:
+  S: 61513 (20.44%)
+  G: 35670 (11.85%)
+  T: 30325 (10.08%)
+  L: 21371 (7.10%)
+  F: 20447 (6.79%)
+
+Performing global alignment analysis...
+
+===== Global Alignment Analysis for seq1746097525323 =====
+Sequence: SGTDFTLTISSLQPEDFATYYCQQSYSTPRTFGQGTKVDIKDIQMTQSPSSLSASVGDRVTITCRASQSISSYLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSL
+Reference: DIQMTQSPSSLSASVGDRVTITCRASQSISSYLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSL
+
+Best Alignment:
+SGTDFTLTISSLQPEDFATYYCQQSYSTPRTFGQGTKVDIKDIQMTQSPSSLSASVGDRVTITCRASQSISSYLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSL
+                                         ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+-----------------------------------------DIQMTQSPSSLSASVGDRVTITCRASQSISSYLNWYQQKPGKAPKLLIYAASSLQSGVPSRFSGSGSGTDFTLTISSL
+  Score=134
+
+
+Alignment Statistics:
+Score: 134.0
+Matches: 78
+Mismatches: 0
+Gaps: 41
+Percent Identity: 100.00%
+
+Analysis complete! Check 'sequence_analysis.png' for visualizations.
