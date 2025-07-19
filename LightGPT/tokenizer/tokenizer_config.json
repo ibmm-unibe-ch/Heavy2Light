@@ -1,0 +1,9 @@
+{
+  "bos_token": "<|endoftext|>",
+  "eos_token": "<|endoftext|>",
+  "unk_token": "<|unk|>",
+  "pad_token": "<|pad|>",
+  "model_max_length": 1024,
+  "tokenizer_class": "GPT2Tokenizer",
+  "name_or_path": "./tokenizer"
+}
