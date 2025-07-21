@@ -1,0 +1,21 @@
+{
+  "decoder_start_token_id": 2,
+  "do_sample": true,
+  "early_stopping": true,
+  "encoder_repetition_penalty": 1.5,
+  "eos_token_id": 3,
+  "max_length": 512,
+  "min_length": 50,
+  "no_repeat_ngram_size": 2,
+  "num_beams": 3,
+  "output_hidden_states": true,
+  "output_logits": true,
+  "output_scores": true,
+  "pad_token_id": 0,
+  "penalty_alpha": 0.6,
+  "return_dict_in_generate": true,
+  "temperature": 0.5,
+  "top_k": 4,
+  "transformers_version": "4.40.2",
+  "vocab_size": 25
+}

@@ -1,0 +1,17 @@
+{
+  "decoder_start_token_id": 2,
+  "dola_layers": [
+    320,
+    340
+  ],
+  "eos_token_id": 3,
+  "max_length": 120,
+  "min_length": 50,
+  "output_hidden_states": true,
+  "output_scores": true,
+  "pad_token_id": 0,
+  "repetition_penalty": 2.0,
+  "return_dict_in_generate": true,
+  "transformers_version": "4.40.2",
+  "vocab_size": 25
+}
