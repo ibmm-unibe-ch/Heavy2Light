@@ -1,4 +1,4 @@
-# A Deep Learning Framework for Heavy-to-Light Antibody Sequence Translation
+# Heavy2Light: A Deep Learning Framework for Heavy-to-Light Antibody Sequence Translation
 
 ## Background
 
