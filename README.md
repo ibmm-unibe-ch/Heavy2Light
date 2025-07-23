@@ -16,7 +16,7 @@ A key challenge in computational immunology is accurately reconstructing or pred
 
 - **Scale and complexity**: Antibody repertoire datasets contain massive amounts of sequence data
 - **Lost pairing information**: NGS loses natural HC-LC associations during sequencing
-- **Functional dependency**: Antibody specificity critically depends on correct HC-LC pairing
+- **Functional dependency**: Antibody specificity depends on correct HC-LC pairing
 - **Limited paired data**: Public databases contain billions of unpaired sequences but only millions of paired examples
 
 ## Approach
@@ -29,7 +29,7 @@ This work implements a novel two-stage deep learning strategy:
 - Trained on >99 million HC and >22 million LC sequences from healthy human donors
 
 ### Stage 2: Translation Model Development
-- **Heavy2Light**: Encoder-decoder architecture combining pre-trained models
+- **Heavy2Light**: Encoder-decoder architecture combining our pre-trained models
 - Uses parameter-efficient adapter-based fine-tuning
 - Translates heavy chain sequences into corresponding light chains
 - Trained on 470k paired sequences from OAS and PLAbDab databases
