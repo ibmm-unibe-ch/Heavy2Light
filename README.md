@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" alt="logo" width="400" />
+</p>
+
 # Heavy2Light: A Deep Learning Framework for Heavy-to-Light Antibody Sequence Translation
 
 ## Background
