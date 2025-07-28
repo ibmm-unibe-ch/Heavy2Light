@@ -24,15 +24,15 @@ A key challenge in computational immunology is accurately reconstructing or pred
 This work implements a novel two-stage deep learning strategy:
 
 ### Stage 1: Pre-training Domain-Specific Language Models
-- **HeavyBERTa**: RoBERTa-based masked language model for heavy chain sequences
-- **LightGPT**: GPT-2-based causal language model for light chain sequences
+- **HeavyBERTa**: [RoBERTa](https://arxiv.org/abs/1907.11692)-based masked language model for heavy chain sequences
+- **LightGPT**: [GPT-2](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)-based causal language model for light chain sequences
 - Trained on >99 million HC and >22 million LC sequences from healthy human donors
 
 ### Stage 2: Translation Model Development
 - **Heavy2Light**: Encoder-decoder architecture combining our pre-trained models
 - Uses parameter-efficient adapter-based fine-tuning
 - Translates heavy chain sequences into corresponding light chains
-- Trained on 470k paired sequences from OAS and PLAbDab databases
+- Trained on 470k paired sequences from [OAS](https://opig.stats.ox.ac.uk/webapps/oas/) and [PLAbDab](https://opig.stats.ox.ac.uk/webapps/plabdab/) databases
 
 ## Getting started
 ### Installation  
