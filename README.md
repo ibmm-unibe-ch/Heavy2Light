@@ -26,7 +26,7 @@ This work implements a novel two-stage deep learning strategy:
 ### Stage 1: Pre-training Domain-Specific Language Models
 - **HeavyBERTa**: [RoBERTa](https://arxiv.org/abs/1907.11692)-based masked language model for heavy chain sequences
 - **LightGPT**: [GPT-2](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)-based causal language model for light chain sequences
-- Trained on >99 million HC and >22 million LC sequences from healthy human donors
+- Trained on >99 million HC and >22 million LC sequences from healthy human donors (from the [OAS](https://opig.stats.ox.ac.uk/webapps/oas/) database)
 
 ### Stage 2: Translation Model Development
 - **Heavy2Light**: Encoder-decoder architecture combining our pre-trained models
