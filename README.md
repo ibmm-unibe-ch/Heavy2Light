@@ -40,3 +40,4 @@ Environment set up to train the models with adapters using conda and [adapter_en
 ```
 conda create --name adapter_env --file adapter_env.txt
 ```
+For more information on the other environments used, see [environments/README.md](environments/README.md)  
