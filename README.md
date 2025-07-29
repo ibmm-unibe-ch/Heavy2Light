@@ -43,7 +43,7 @@ conda create --name adapter_env --file adapter_env.txt
 For more information on the other environments used, see [environments/README.md](environments/README.md)  
 
 ## How to use the Heavy2Light model
-You can load the model from [Huggingface](https://huggingface.co/leaBroe)
+All models are available on [Huggingface](https://huggingface.co/leaBroe)
 
 ```python
 from transformers import EncoderDecoderModel, AutoTokenizer, GenerationConfig
@@ -62,7 +62,7 @@ model.set_active_adapters(adapter_name)
 
 generation_config = GenerationConfig.from_pretrained(model_path)
 ```
-and then generate one or multiple sequences:  
+Generate one or multiple light sequences:  
 
 ```python
 # example input heavy sequence
