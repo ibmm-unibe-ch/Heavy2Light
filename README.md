@@ -41,3 +41,57 @@ Environment set up to train the models with adapters using conda and [adapter_en
 conda create --name adapter_env --file adapter_env.txt
 ```
 For more information on the other environments used, see [environments/README.md](environments/README.md)  
+
+## How to use the Heavy2Light model
+You can load the model from [Huggingface](https://huggingface.co/leaBroe)
+
+```python
+from transformers import EncoderDecoderModel, AutoTokenizer, GenerationConfig
+from adapters import init
+
+model_path = "leaBroe/Heavy2Light"
+subfolder_path = "heavy2light_final_checkpoint"
+
+model = EncoderDecoderModel.from_pretrained(model_path)
+
+tokenizer = AutoTokenizer.from_pretrained(model_path, subfolder=subfolder_path)
+
+init(model)
+adapter_name = model.load_adapter("leaBroe/Heavy2Light_adapter", set_active=True)
+model.set_active_adapters(adapter_name)
+
+generation_config = GenerationConfig.from_pretrained(model_path)
+```
+and then generate one or multiple sequences:  
+
+```python
+# example input heavy sequence
+heavy_seq = "QLQVQESGPGLVKPSETLSLTCTVSGASSSIKKYYWGWIRQSPGKGLEWIGSIYSSGSTQYNPALGSRVTLSVDTSQTQFSLRLTSVTAADTATYFCARQGADCTDGSCYLNDAFDVWGRGTVVTVSS"
+
+inputs = tokenizer(
+    heavy_seq,
+    padding="max_length",
+    truncation=True,
+    max_length=250,
+    return_tensors="pt"
+)
+
+generated_seq = model.generate(
+    input_ids=inputs.input_ids,
+    attention_mask=inputs.attention_mask,
+    num_return_sequences=1,
+    output_scores=True,
+    return_dict_in_generate=True,
+    generation_config=generation_config,
+    bad_words_ids=[[4]],
+    do_sample=True,
+    temperature=1.0,
+)
+
+generated_text = tokenizer.decode(
+    generated_seq.sequences[0],
+    skip_special_tokens=True,
+)
+
+print("Generated light sequence:", generated_text)
+```
