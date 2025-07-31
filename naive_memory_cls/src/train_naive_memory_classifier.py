@@ -317,7 +317,7 @@ def test(args, device):
     print("Classification Report (Test):")
     print(classification_report(all_labels, all_preds))
 
-    test_folder = os.path.join(args.checkpoint_base_dir, f"{args.run_name}")
+    test_folder = os.path.join(args.test_folder, f"{args.run_name}")
     os.makedirs(test_folder, exist_ok=True)
     log_path = os.path.join(test_folder, "test_log.txt")
     with open(log_path, "w") as log_file:
@@ -358,7 +358,7 @@ if __name__ == "__main__":
     parser.add_argument("--tokenizer_path", type=str, required=True, help="Path to tokenizer")
     parser.add_argument("--adapter_path", type=str, default=None, help="Path to adapter")
     parser.add_argument("--adapter_name", type=str, default=None, help="Name of adapter to use")
-    parser.add_argument("--checkpoint_base_dir", type=str, required=True, help="Base directory to save checkpoints")
+    parser.add_argument("--checkpoint_base_dir", type=str, required=False, help="Base directory to save checkpoints")
     parser.add_argument("--max_length", type=int, default=150, help="Max sequence length for padding/truncation")
     parser.add_argument("--batch_size", type=int, default=64, help="Batch size for DataLoader")
     parser.add_argument("--epochs", type=int, default=10, help="Number of training epochs")
@@ -366,7 +366,8 @@ if __name__ == "__main__":
     parser.add_argument("--weight_decay", type=float, default=0.01, help="Weight decay for optimizer")
     parser.add_argument("--dropout", type=float, default=0.1, help="Dropout rate")
     parser.add_argument("--run_name", type=str, default="no_name", help="Run name")
-    parser.add_argument("--wandb_project", type=str, default="heavy_chain_classifier", help="wandb project name")
+    parser.add_argument("--wandb_project", type=str, default="naive_memory_classifier", help="wandb project name")
+    parser.add_argument("--test_folder", type=str, default="naive_memory_classifier", help="where to save test results")
     
     args = parser.parse_args()
     main(args)
