@@ -29,32 +29,8 @@ print(f"device: {device}")
 
 
 ############################################ BERT2GPT with adapters ############################################
-# Load the pre-trained models
-############################################ light heavy model / light light model ############################################
-# decoder: light model smaller config and encoder: heavy model smaller config
-# decoder path epoch 40: /ibmm_data2/oas_database/paired_lea_tmp/light_model/src/redo_ch/FULL_config_4_smaller_model_run_lr5e-5_500epochs_max_seq_length_512/checkpoint-56556520
-# encoder smaller model epoch 19: /ibmm_data2/oas_database/paired_lea_tmp/heavy_model/src/redo_ch/FULL_config_4_smaller_model_run_lr5e-5_500epochs_max_seq_length_512/checkpoint-117674391
 
-#small_heavy_encoder="/storage/homefs/lb24i892/bert2gpt_translation/bert_encoder_heavy/checkpoint-117674391"
 small_heavy_encoder = "/ibmm_data2/oas_database/paired_lea_tmp/heavy_model/src/redo_ch/FULL_config_4_smaller_model_run_lr5e-5_500epochs_max_seq_length_512/checkpoint-117674391"
-#small_light_decoder =  "/ibmm_data2/oas_database/paired_lea_tmp/light_model/src/redo_ch/FULL_config_4_smaller_model_run_lr5e-5_500epochs_max_seq_length_512/checkpoint-56556520"
-
-#big_heavy_encoder = "/ibmm_data2/oas_database/paired_lea_tmp/heavy_model/src/redo_ch/FULL_config_3_roberta_run_lr5e-5_500epochs_max_seq_length_512/checkpoint-55740501"
-
-
-#light_gpt_decoder = "/storage/homefs/lb24i892/gpt_light_model_unpaired/model_outputs/small_gpt2_test_light_seqs_unp/checkpoint-74"
-#light_gpt_decoder ="/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/gpt_decoder/checkpoint-74"
-#light_gpt_decoder = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/gpt_decoder/small_gpt2_test_light_seqs_unp_lr_5e-4/checkpoint-47"
-#light_gpt_decoder = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/gpt_decoder/old_tokenizer/checkpoint-74"
-
-# not fully trained model with same tokenizer as light bert model unpaired
-#light_gpt_decoder = "/ibmm_data2/oas_database/paired_lea_tmp/light_model/gpt_model_light_unpaired/src/gpt_light_model_unpaired/model_outputs/small_new_tokenizer_gpt2_light_seqs_unp_lr_5e-4_wd_0.1_bs_32_epochs_500_5/checkpoint-20"
-
-# trained gpt model with full data unpaired epoch 3 (but not fully trained yet)
-#light_gpt_decoder = "/ibmm_data2/oas_database/paired_lea_tmp/light_model/gpt_model_light_unpaired/src/gpt_light_model_unpaired/model_outputs/full_new_tokenizer_gpt2_light_seqs_unp_lr_5e-4_wd_0.1_bs_32_epochs_500_/checkpoint-443328"
-
-# trained gpt model with full data unpaired epoch 41
-#light_gpt_decoder = "/ibmm_data2/oas_database/paired_lea_tmp/light_model/gpt_model_light_unpaired/src/gpt_light_model_unpaired/model_outputs/full_new_tokenizer_gpt2_light_seqs_unp_lr_5e-4_wd_0.1_bs_32_epochs_500_/checkpoint-6058816"
 
 # trained gpt model with full data unpaired epoch 80
 light_gpt_decoder="/ibmm_data2/oas_database/paired_lea_tmp/light_model/gpt_model_light_unpaired/src/gpt_light_model_unpaired/model_outputs/full_new_tokenizer_gpt2_light_seqs_unp_lr_5e-4_wd_0.1_bs_32_epochs_500_/checkpoint-11822080"
@@ -305,93 +281,10 @@ def load_data(file_path):
     df = pd.DataFrame(sequences, columns=['heavy', 'light'])
     return df
 
-# on vader
-# SMALL dataset with input heavyseq[SEP]lightseq with each AA SPACE SEPARATED with dataset: human healthy, no vaccine, no disease and PLAbDab unique paired seqs
-#train_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2BERT/new_data/PLAbDab_db/train_val_test_datasets/plabdab_human_healthy_no_vac_allocated_train_no_identifiers_small.txt"
-
-# spaces SMALL dataset with input heavyseq[SEP]lightseq with each AA SPACE SEPARATED with dataset: human healthy, no vaccine, no disease and PLAbDab unique paired seqs
-#train_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2BERT/new_data/PLAbDab_db/train_val_test_datasets/plabdab_human_healthy_no_vac_allocated_train_no_identifiers_spaces_small.txt"
-
-# full dataset
-#train_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2BERT/new_data/PLAbDab_db/train_val_test_datasets/plabdab_human_healthy_no_vac_allocated_train_no_identifiers.txt"
-
-# # 100 70 50 dataset
-# train_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/train_test_val_datasets/heavy_sep_light_seq/paired_full_seqs_sep_train_no_ids.txt"
-# val_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/train_test_val_datasets/heavy_sep_light_seq/paired_full_seqs_sep_val_no_ids.txt"
-# test_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/train_test_val_datasets/heavy_sep_light_seq/paired_full_seqs_sep_test_no_ids.txt"
-
-# on ubelix
-#train_file_path="/storage/homefs/lb24i892/bert2gpt_translation/plabdab_human_healthy_no_vac_allocated_train_no_identifiers_spaces_small.txt"
-
-# on vader
-#val_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2BERT/new_data/PLAbDab_db/train_val_test_datasets/plabdab_human_healthy_no_vac_allocated_val_no_identifiers_small.txt"
-
-#val_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2BERT/new_data/PLAbDab_db/train_val_test_datasets/plabdab_human_healthy_no_vac_allocated_val_no_identifiers_spaces_small.txt"
-
-# full dataset
-#val_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2BERT/new_data/PLAbDab_db/train_val_test_datasets/plabdab_human_healthy_no_vac_allocated_val_no_identifiers.txt"
-
-# # combined OAS and pairedngs db
-# train_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_abngs_db/train_val_test_oas_and_pairedabngs/combined_train_dataset_oas_pairedabngs_no_dupl.txt"
-# val_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_abngs_db/train_val_test_oas_and_pairedabngs/combined_val_dataset_oas_pairedabngs_no_dupl.txt"
-
-# # combined OAS and pairedngs db
-# test_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_abngs_db/train_val_test_oas_and_pairedabngs/combined_test_dataset_oas_pairedabngs_no_dupl.txt"
-
-# # oas db only kappa and balanced
-# train_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/kappa_only_translation_balanced_v_gene_families/data/kappa_only_balanced/train_data_only_seq.csv"
-# val_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/kappa_only_translation_balanced_v_gene_families/data/kappa_only_balanced/validation_data_only_seq.csv"
-
-# oas db kappa only everything paired without duplicates
-# train_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/kappa_only_translation_balanced_v_gene_families/data/kappa_only_full_paired/train_data_only_seq.csv"
-# val_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/kappa_only_translation_balanced_v_gene_families/data/kappa_only_full_paired/validation_data_only_seq.csv"
-
-# test data oas kappa only balanced
-#test_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/kappa_only_translation_balanced_v_gene_families/data/kappa_only_balanced/test_data_only_seq.csv"
-
-# test data oas kappa only full paired without duplicates
-#test_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/kappa_only_translation_balanced_v_gene_families/data/kappa_only_full_paired/test_data_only_seq.csv"
-
-# lambda only balanced dataset OAS
-# train_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/lambda_only_translation_balanced_v_gene_families/data/train_data_lambda_only_seq.csv"
-# val_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/lambda_only_translation_balanced_v_gene_families/data/validation_data_lambda_only_seq.csv"
-
-# # kappa only balanced dataset 30% allocation
-# train_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/kappa_only_translation_balanced_v_gene_families/data/kappa_only_balanced/30_pident_assignment/datasets/kappa_only_balanced_alloc_30_pident_train_no_id.txt"
-# val_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/kappa_only_translation_balanced_v_gene_families/data/kappa_only_balanced/30_pident_assignment/datasets/kappa_only_balanced_alloc_30_pident_val_no_id.txt"
-
-# lambda only balanced dataset 30% allocation
-# train_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/lambda_only_translation_balanced_v_gene_families/data/datasets_30pident_allocation/datasets/lambda_only_balanced_alloc_30_pident_train_no_id.txt"
-# val_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/lambda_only_translation_balanced_v_gene_families/data/datasets_30pident_allocation/datasets/lambda_only_balanced_alloc_30_pident_val_no_id.txt"
-
-# test data lambda only balanced
-#test_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/lambda_only_translation_balanced_v_gene_families/data/test_data_lambda_only_seq.csv"
-
-# # test file balanced kappa only 30% allocation
-# test_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/kappa_only_translation_balanced_v_gene_families/data/kappa_only_balanced/30_pident_assignment/datasets/kappa_only_balanced_alloc_30_pident_test_no_id.txt"
-
-#test file lambda only balanced 30% allocation
-#test_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2GPT/lambda_only_translation_balanced_v_gene_families/data/datasets_30pident_allocation/datasets/lambda_only_balanced_alloc_30_pident_test_no_id.txt"
-
-# on ubelix
-#val_file_path="/storage/homefs/lb24i892/bert2gpt_translation/plabdab_human_healthy_no_vac_allocated_val_no_identifiers_spaces_small.txt"
-
-# # paired sequences with clustered light seqs 80% identity and allocation based on 30%
-# train_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/check_pairings_gen_sequences/clustered_light_seqs_datasets/full_paired_oas_no_dupl_light_seqs_80_clu_rep_30_alloc/full_paired_oas_no_dupl_light_seqs_80_clu_rep_30_alloc_train_heavy_sep_light.csv"
-# val_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/check_pairings_gen_sequences/clustered_light_seqs_datasets/full_paired_oas_no_dupl_light_seqs_80_clu_rep_30_alloc/full_paired_oas_no_dupl_light_seqs_80_clu_rep_30_alloc_val_heavy_sep_light.csv"
-# test_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/check_pairings_gen_sequences/clustered_light_seqs_datasets/full_paired_oas_no_dupl_light_seqs_80_clu_rep_30_alloc/full_paired_oas_no_dupl_light_seqs_80_clu_rep_30_alloc_test_heavy_sep_light.csv"
-
-# # paired sequences with clustered light seqs 90% identity and allocation based on 30%
-# train_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/check_pairings_gen_sequences/clustered_light_seqs_datasets/full_paired_oas_no_dupl_light_seqs_90_clu_rep_30_alloc/full_paired_oas_no_dupl_light_seqs_90_clu_rep_30_alloc_train_heavy_sep_light.csv"
-# val_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/check_pairings_gen_sequences/clustered_light_seqs_datasets/full_paired_oas_no_dupl_light_seqs_90_clu_rep_30_alloc/full_paired_oas_no_dupl_light_seqs_90_clu_rep_30_alloc_val_heavy_sep_light.csv"
-# test_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/check_pairings_gen_sequences/clustered_light_seqs_datasets/full_paired_oas_no_dupl_light_seqs_90_clu_rep_30_alloc/full_paired_oas_no_dupl_light_seqs_90_clu_rep_30_alloc_test_heavy_sep_light.csv"
-
 # paired sequences with clustered light seqs 90% identity and allocation based on 70%
 train_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/check_pairings_gen_sequences/clustered_light_seqs_datasets/full_paired_oas_no_dupl_light_seqs_90_clu_rep_70_alloc/full_paired_oas_no_dupl_light_seqs_90_clu_rep_70_alloc_train_heavy_sep_light.csv"
 val_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/check_pairings_gen_sequences/clustered_light_seqs_datasets/full_paired_oas_no_dupl_light_seqs_90_clu_rep_70_alloc/full_paired_oas_no_dupl_light_seqs_90_clu_rep_70_alloc_val_heavy_sep_light.csv"
 test_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/check_pairings_gen_sequences/clustered_light_seqs_datasets/full_paired_oas_no_dupl_light_seqs_90_clu_rep_70_alloc/full_paired_oas_no_dupl_light_seqs_90_clu_rep_70_alloc_test_heavy_sep_light.csv"
-
-
 
 train_df = load_data(train_file_path)
 val_df = load_data(val_file_path)
@@ -555,17 +448,6 @@ model.save_pretrained(model_output_path)
 model.save_adapter(adapter_output_path, "heavy2light_adapter")
 #decoder.save_adapter(output_path, "decoder_adapter")
 
-# Load your test data
-#test_file_path = '/ibmm_data2/oas_database/paired_lea_tmp/paired_model/train_test_val_datasets/heavy_sep_light_seq/paired_full_seqs_sep_test_no_ids_space_separated_SMALL.txt'
-
-# on vader: small test dataset all human paired, no duplicates + PLAbDab unique paired sequences
-#test_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/BERT2BERT/new_data/PLAbDab_db/train_val_test_datasets/plabdab_human_healthy_no_vac_allocated_test_no_identifiers_small.txt"
-# on ubelix:
-#test_file_path="/storage/homefs/lb24i892/bert2gpt_translation/plabdab_human_healthy_no_vac_allocated_test_no_identifiers_spaces_small.txt"
-
-# small test file with no spaces
-#test_file_path = "/ibmm_data2/oas_database/paired_lea_tmp/paired_model/train_test_val_datasets/heavy_sep_light_seq/paired_full_seqs_sep_test_no_ids_small.txt"
-
 test_df = load_data(test_file_path)
 
 
@@ -574,8 +456,6 @@ heavy_sequences = test_df["heavy"]
 true_light_sequences = test_df["light"]
 print("first true light sequence: ", true_light_sequences[0])
 
-#print("light_sequences: ", light_sequences)
-#print(f"length of light sequences {len(light_sequences)}")
 
 generated_light_seqs = []
 
