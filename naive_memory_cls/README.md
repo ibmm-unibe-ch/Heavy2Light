@@ -24,7 +24,7 @@ To test the model on a dataset, choose the appropriate **chain type** (e.g., `he
 
 ```bash
 CHAIN="heavy" 
-MODEL_PATH=""
+MODEL_PATH="leaBroe/HeavyBERTa"
 TOKENIZER_PATH="$MODEL_PATH"
 MODE="test"
 
@@ -55,7 +55,7 @@ To train a new classifier, provide paths to your train/validation CSV files and 
 
 ```bash
 CHAIN="light"
-MODEL_PATH=""
+MODEL_PATH="leaBroe/LightGPT"
 TOKENIZER_PATH="$MODEL_PATH"
 MODE="train"
 
