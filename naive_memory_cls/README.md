@@ -1,6 +1,8 @@
 # Naive/Memory Chain Classifier
 
-This repository provides a transformer-based classifier for distinguishing **naive** and **memory** B-cell sequences, using **adapters** integrated into pre-trained models (e.g., RoBERTa).
+This repository provides a transformer-based classifier for distinguishing between **naive and memory B-cell** receptor sequences. It leverages adapters integrated into pre-trained language models for efficient fine-tuning.
+
+Depending on your input, you can choose between models trained on **heavy or light chain sequences**.
 
 ---
 
