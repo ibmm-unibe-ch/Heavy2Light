@@ -1,1 +1,39 @@
+#### TEST THE MODEL 
+# select the chain that you want to use and the model accordingly
+CHAIN="heavy"
+MODEL_PATH="/ibmm_data2/oas_database/paired_lea_tmp/heavy_model/src/redo_ch/FULL_config_4_smaller_model_run_lr5e-5_500epochs_max_seq_length_512/checkpoint-117674391" ##eavy model 
+TOKENIZER_PATH="/ibmm_data2/oas_database/paired_lea_tmp/heavy_model/src/redo_ch/FULL_config_4_smaller_model_run_lr5e-5_500epochs_max_seq_length_512/checkpoint-117674391" ##eavy model 
+
+MODE="test"
+
+ADAPTER_NAME="${CHAIN}_to_naive_memory_cls"
+MAX_LENGTH=150
+BATCH_SIZE=64
+EPOCHS=200
+LEARNING_RATE=3e-6
+WEIGHT_DECAY=0.01
+DROPOUT=0.1
+RUN_NAME="${CHAIN}_bs${BATCH_SIZE}_lr${LEARNING_RATE}_wd${WEIGHT_DECAY}_do${DROPOUT}"
+WANDB_PROJECT="naive_memory_classifier"
+
+
+CHECKPOINT_BASE_DIR="../models/${RUN_NAME}/BEST_MODEL*"
+
+TEST_CSV='unsorted_b_cells_full_paired_data_all_cols.csv'
+echo "Run name: ${RUN_NAME}"
+
+# Esegui lo script Python per il training del classificatore
+python train_naive_memory_classifier.py \
+    --mode $MODE \
+    --model_path $MODEL_PATH \
+    --tokenizer_path $TOKENIZER_PATH \
+    --adapter_name $ADAPTER_NAME \
+    --checkpoint_base_dir $CHECKPOINT_BASE_DIR \
+    --max_length $MAX_LENGTH \
+    --batch_size $BATCH_SIZE \
+    --run_name $RUN_NAME \
+    --wandb_project $WANDB_PROJECT \
+    --adapter_path $CHECKPOINT_BASE_DIR \
+    --test_csv $TEST_CSV 
+
 
