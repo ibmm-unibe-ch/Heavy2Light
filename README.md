@@ -43,7 +43,8 @@ conda create --name adapter_env --file adapter_env.txt
 For more information on the other environments used, see [environments/README.md](environments/README.md)  
 
 ## How to use the Heavy2Light model
-All models are available on [Huggingface](https://huggingface.co/leaBroe)
+All models are available on [Huggingface](https://huggingface.co/leaBroe).  
+For a quick start on using our model, you can also use our [Colab notebook](https://colab.research.google.com/drive/15aCx7S2wEvzwHd2QBPEgNuMTMW-g5_hu?authuser=0#scrollTo=J1hlCfxJ09UK).  
 
 ```python
 from transformers import EncoderDecoderModel, AutoTokenizer, GenerationConfig
